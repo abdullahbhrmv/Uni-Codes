@@ -20,6 +20,7 @@ body {
 .container select,
 .container button {
     margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .container input[type="text"],
@@ -28,6 +29,7 @@ body {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-size: 16px;
 }
 
 .container button {
@@ -38,10 +40,12 @@ body {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 #result {
     margin-top: 10px;
     text-align: center;
     color: #008000;
+    font-size: 18px;
 }
