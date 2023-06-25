@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-AO">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <meta name="author" content="Edlávio Alberto">
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Instagram</title>
+    <title>Instagram - Login</title>
 </head>
 <body onload="SwitchScreen()">
         <section class="container">
@@ -28,24 +28,26 @@
                     <img src="img/logo.png" alt="Instagram Logo">
                 </div>
                 <form>
-                    <input type="email" name="username" id="username" placeholder="Telefone, nome de usuário ou email">
-                    <input type="password" name="password" id="password" placeholder="Senha">
-                    <input type="submit" name="submit" value="Entrar">
+                    <input type="email" name="username" id="username" placeholder="Telephone, Username or Email">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="checkbox" id="save-login">
+                    <label for="save-login">Save the Login</label>
+                    <input type="submit" name="submit" value="Login">
                     <div class="other-option">
-                        <div></div> <p>OU</p> <div></div>
+                        <div></div> <p>OR</p> <div></div>
                     </div>
                     <div class="options">
-                        <a href="#" class="social"> <span><i class="fab fa-facebook-square"></i></span> Entrar com o Facebook </a>
-                        <div class="forget"> <a href="#">Esqueceu a senha?</a> </div>
+                        <a href="#" class="social"> <span><i class="fab fa-facebook-square"></i></span> Log in with Facebook </a>
+                        <div class="forget"> <a href="#">Forgot password?</a> </div>
                     </div>
                 </form>
                 <div class="noaccount">
-                    <a href="#">Não tem uma conta? <span>Cadastre-se</span></a>
+                    <a href="#">Don't have an account? <span>Register</span></a>
                 </div>
                 <div class="apps">
-                    <p>Obtenha o aplicativo</p>
-                    <a href="#"> <img src="img/appstore.png" alt="Baixar o aplicativo na AppStore"> </a>
-                    <a href="#"> <img src="img/googleplay.png" alt="Baixar o aplicativo no Google Play"> </a>
+                    <p>Get the app</p>
+                    <a href="#"> <img src="img/appstore.png" alt="Download the app from the AppStore"> </a>
+                    <a href="#"> <img src="img/googleplay.png" alt="Download the app on Google Play"> </a>
                 </div>
             </article>
         </section>
@@ -54,34 +56,28 @@
         <footer>
             <div class="footer-content">
                 <a href="#">Meta</a>
-                <a href="#">Sobre</a>
+                <a href="#">About</a>
                 <a href="#">Blog</a>
-                <a href="#">Carreiras</a>
+                <a href="#">Jobs</a>
+                <a href="#">Help</a>
                 <a href="#">API</a>
-                <a href="#">Privacidade</a>
-                <a href="#">Termos</a>
-                <a href="#">Principais contas</a>
-                <a href="#">Hashtags</a>
-                <a href="#">Localizações</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Top Accounts</a>
+                <a href="#">Locations</a>
                 <a href="#">Instagram Lite</a>
-                <a href="#">Carregamento de contactos e não usuários</a>
-            </div>
-            <div>
-                <a href="#">Dança</a>
-                <a href="#">Comida e bebida</a>
-                <a href="#">Casa jardim</a>
-                <a href="#">Música</a>
-                <a href="#">Artes visuais</a>
+                <a href="#">Contact Uploading & Non-Users</a>
+                <a href="#">Meta Verified</a>
             </div>
             <div class="copyright">
-                <select aria-label="Trocar idioma de exibição">
+                <select aria-label="Change display language">
+                    <option value="en">English</option>
                     <option value="pt">Português (Portugal)</option>
                     <option value="af">Afrikaans</option>
                     <option value="cs">Čeština</option>
                     <option value="da">Dansk</option>
                     <option value="de">Deutsch</option>
                     <option value="el">Ελληνικά</option>
-                    <option value="en">English</option>
                     <option value="en-gb">English (UK)</option>
                     <option value="es">Español (España)</option>
                     <option value="es-la">Español</option>
@@ -119,7 +115,7 @@
                     <option value="sr">Српски</option>
                     <option value="uk">Українська</option>
                 </select>
-                <span>&copy; 2022 Instagram from Meta</span>
+                <span>&copy; 2023 Instagram from Meta</span>
             </div>
         </footer>
     <script src="app.js"></script>

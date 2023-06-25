@@ -16,5 +16,4 @@ function SwitchScreen() {
 
   screens[screenIndex-1].style.display = "block"
   setTimeout(SwitchScreen, 2500)
-
 }
