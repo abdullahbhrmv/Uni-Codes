@@ -1,0 +1,202 @@
+html,
+body {
+ width: 100%;
+ height: 100%;
+}
+
+body {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ overflow: hidden;
+ animation: bg-anim 15s ease infinite;
+ background-image: linear-gradient(-45deg, #4571d8, #21586f, #666b7a, #2b5ea5);
+ background-size: 400% 400%;
+}
+
+.container {
+ position: relative;
+ width: 263px;
+ max-height: 525px;
+ height: 100vh;
+ overflow: hidden;
+ border-radius: 20px;
+ box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+ z-index: 1;
+}
+
+.device {
+ position: absolute;
+}
+
+.layer1,
+.layer2 {
+ position: absolute;
+ right: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ transform: scale(1.01);
+}
+
+.layer2 {
+ opacity: 0;
+ transition: 4s;
+}
+
+.layer1 {
+ opacity: 1;
+ transition: 4s;
+}
+
+.moon {
+ transform: translate(-50px, 230px);
+ transition: 4s;
+}
+
+.rising-star {
+ transform: translate(225px, -160px);
+ transition: 4s;
+}
+
+.sun {
+ transition: 5s;
+}
+
+.cloud1,
+.cloud2,
+.cloud3,
+.cloud4 {
+ transition: 4s;
+}
+
+.light-mode {
+ .layer2 {
+  opacity: 1;
+ }
+
+ .moon,
+ .rising-star {
+  transform: none;
+  transition-delay: 1s;
+ }
+
+ .sun {
+  transform: translate(64px, -290px);
+ }
+
+ .cloud1 {
+  transform: translateX(-140px);
+ }
+
+ .cloud2 {
+  transform: translateX(-100px);
+ }
+
+ .cloud3 {
+  transform: translateX(-200px);
+ }
+
+ .cloud4 {
+  transform: translateX(-180px);
+ }
+}
+
+.toggle {
+ width: 45px;
+ height: 24px;
+ position: absolute;
+ right: 8px;
+ top: 8px;
+ z-index: 1;
+ cursor: pointer;
+}
+
+:root {
+ --mountainY: 0;
+}
+
+.mountain3 {
+ transform: translateX(29px) scaleX(1.04) translateY(var(--mountainY));
+}
+
+[class*="mountain"] {
+ transform: translateY(var(--mountainY));
+ animation: goUp 2s both;
+}
+
+.mountain2 {
+ animation-delay: 0.2s;
+}
+.mountain3 {
+ animation-delay: 0.4s;
+}
+.mountain4 {
+ animation-delay: 0.6s;
+}
+.mountain5 {
+ animation-delay: 0.8s;
+}
+.mountain6 {
+ animation-delay: 1s;
+}
+.mountain7 {
+ animation-delay: 1.2s;
+}
+
+.right {
+ animation: goLeft 2s 0.2s both;
+}
+
+.tree {
+ animation: goUp 2s both;
+}
+
+.sun {
+ animation: fadeIn 2s 2s both;
+}
+
+.sky {
+ animation: sky 2s 2s both;
+}
+
+.m3 {
+ transform: translateX(26px) scaleX(1.1);
+}
+
+@keyframes goUp {
+ from {
+  transform: translateY(200px);
+ }
+}
+
+@keyframes sky {
+ from {
+  transform: scale(2);
+ }
+}
+
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+ }
+}
+
+@keyframes goLeft {
+ from {
+  transform: translateX(200px);
+ }
+}
+
+@keyframes bg-anim {
+ 0% {
+  background-position: 0% 50%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 100% {
+  background-position: 0% 50%;
+ }
+}
