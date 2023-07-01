@@ -1,0 +1,123 @@
+:root {
+  --background: black;
+  --pacman-radius: 200px;
+  --food-radius: 20px;
+  --food-distance: calc(var(--pacman-radius) / 2);
+  --chew-interval: 0.4s;
+}
+
+body {
+  background: var(--background);
+}
+
+.pacman {
+  background: yellow;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc(-1 * var(--pacman-radius) / 2);
+  margin-left: calc(-1 * var(--pacman-radius) / 2);
+  width: var(--pacman-radius);
+  height: var(--pacman-radius);
+  border-radius: 50%;
+}
+
+.pacman-food {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc(-1 * var(--food-radius) / 2);
+  overflow: hidden;
+  width: calc((var(--food-distance) + var(--food-radius)) * 5);
+}
+
+@keyframes om-nom-nom-top {
+  0% {
+    border-bottom-width: 0;
+  }
+  50% {
+    border-bottom-width: calc(var(--pacman-radius) / 2);
+  }
+  100% {
+    border-bottom-width: 0;
+  }
+}
+
+@keyframes om-nom-nom-bottom {
+  0% {
+    border-top-width: 0;
+  }
+  50% {
+    border-top-width: calc(var(--pacman-radius) / 2);
+  }
+  100% {
+    border-top-width: 0;
+  }
+}
+
+.jaw > div {
+  width: 0;
+  position: absolute;
+  height: 0;
+  left: calc(var(--pacman-radius) / 3);
+  border-color: transparent;
+  border-style: solid;
+  border-left-width: calc(var(--pacman-radius) / 1.5);
+}
+
+.jaw > .top {
+  border-bottom-color: var(--background);
+  border-bottom-width: calc(var(--pacman-radius) / 2);
+  animation: om-nom-nom-top var(--chew-interval) infinite;
+  bottom: calc(var(--pacman-radius) / 2);
+}
+
+.jaw > .bottom {
+  border-top-width: calc(var(--pacman-radius) / 2);
+  border-top-color: var(--background);
+  top: calc(var(--pacman-radius) / 2);
+  animation: om-nom-nom-bottom var(--chew-interval) infinite;
+}
+
+@keyframes food-mooving {
+  0% {
+    transform: translateX(var(--food-radius));
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--food-distance)));
+  }
+}
+
+@keyframes food-eated {
+  0% {
+    opacity: 1;
+  }
+  74.9% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.food-item:first-of-type {
+  animation: food-eated var(--chew-interval) infinite;
+}
+
+.food-item {
+  width: var(--food-radius);
+  height: var(--food-radius);
+  border-radius: 50%;
+  background: white;
+  float: left;
+  margin-left: var(--food-distance);
+}
+
+.infinite-dish {
+  position: relative;
+  animation: food-mooving var(--chew-interval) infinite;
+  animation-timing-function: linear;
+}
