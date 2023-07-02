@@ -1,0 +1,1188 @@
+/*
+    declare :root, and stick in the variables.
+*/
+:root {
+	/* 
+        Colour Variables 
+        We can then change these variable values with JavaScript.
+    */
+	--man-bg-color: #73627c;
+	--sky-bg-color: #bbdcd5;
+
+	--cloud-white: #ffffff;
+	--cloud-dark-white: #feebef;
+	--sky-foreground: linear-gradient(
+		to bottom,
+		rgba(136, 191, 232, 0) 0%,
+		rgba(245, 221, 156, 1) 100%
+	);
+	--star-background-color: rgba(241, 241, 241, 0);
+
+	--building-bg-color: #cf505f;
+	--building-light-bg-color: #fd817e;
+
+	--dark-water-bg: #88b2d3;
+	--other-water-bg: #6e6a8f;
+
+	--window-glass-color: #626473;
+	--window-shadow-out-color: #b74254;
+	--window-shadow-in-color: #454859;
+
+	--window-glass-shine-color: #96899d;
+
+	--window-frame-color: #d4d0da;
+
+	--shining-light-color: #f5df9c;
+
+	--boat-reflection: rgba(128, 125, 154, 0.5);
+
+	--moon-background-color: rgba(255, 255, 255, 0);
+
+	--first-step-bg-color: #a69ba3;
+	--second-step-bg-color: #5f6171;
+
+	/*
+        Transition Variable
+    */
+	--transition: 500ms;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	transition: var(--transition);
+}
+#stars {
+	width: 80%;
+	height: 67%;
+	position: relative;
+	left: 10%;
+}
+.stars {
+	position: absolute;
+	background: var(--star-background-color);
+	z-index: 18;
+	border-radius: 100%;
+}
+
+.container-day-night {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	transition: var(--transition);
+}
+
+.day-night-oval {
+	position: relative;
+	height: 600px;
+	width: 600px;
+	background: var(--sky-bg-color);
+	margin: auto;
+	top: 3%;
+	border-radius: 100%;
+	z-index: 1;
+	overflow: hidden;
+	box-shadow: 0px 0px 105px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.sky {
+	position: absolute;
+	height: 74%;
+	width: 17%;
+	background: var(--sky-bg-color);
+
+	left: 41%;
+	top: 0;
+	transition: var(--transition);
+}
+.left-frame {
+	position: absolute;
+	height: 61%;
+	width: 51%;
+	background: var(--window-frame-color);
+	bottom: 0;
+	left: 0;
+	transition: var(--transition);
+}
+
+.left-frame-inner {
+	position: absolute;
+	height: 104%;
+	width: 70%;
+	background: var(--window-glass-color);
+	bottom: 8%;
+	left: 20%;
+	box-shadow: -7px 0px 0px var(--window-shadow-in-color) inset;
+	transition: var(--transition);
+}
+.right-frame-inner {
+	position: absolute;
+	height: 104%;
+	width: 62%;
+	background: var(--window-glass-color);
+	bottom: 8%;
+	left: 20%;
+	box-shadow: -7px 0px 0px var(--window-shadow-in-color) inset;
+	transition: var(--transition);
+}
+
+.right-building-sun-light {
+	position: absolute;
+	height: 100%;
+	width: 36%;
+	top: 0;
+	left: 0;
+	background: var(--building-light-bg-color);
+	transition: var(--transition);
+}
+
+.top-window-half {
+	position: relative;
+	height: 52%;
+	top: 16%;
+	width: 80%;
+	margin: auto;
+	background: var(--window-glass-color);
+	box-shadow: -7px 0px 0px var(--window-shadow-in-color) inset;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 100%;
+	transition: var(--transition);
+}
+.top-right-window-half {
+	position: relative;
+	height: 52%;
+	top: 16%;
+	width: 80%;
+	margin: auto;
+	background: var(--window-glass-color);
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 100%;
+	transition: var(--transition);
+}
+.top-frame {
+	position: absolute;
+	height: 40%;
+	width: 100%;
+	background: var(--window-frame-color);
+	border-top-left-radius: 70%;
+	border-top-right-radius: 70%;
+	overflow: hidden;
+	box-shadow: 8px 0px 0px var(--window-shadow-out-color);
+	transition: var(--transition);
+}
+.right-frame {
+	position: absolute;
+	height: 61%;
+	width: 51%;
+	background: var(--window-frame-color);
+	bottom: 0;
+	right: 0;
+	box-shadow: 8px 0px 0px var(--window-shadow-out-color);
+	transition: var(--transition);
+}
+.top-window-overlay {
+	position: absolute;
+	background: var(--window-frame-color);
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	transition: var(--transition);
+}
+.window-overlay {
+	position: absolute;
+	background: var(--window-frame-color);
+	height: 70%;
+	width: 100%;
+	bottom: 0;
+	transition: var(--transition);
+}
+.bottom-sky {
+	position: absolute;
+	height: 70%;
+	width: 100%;
+	background: var(--sky-foreground);
+	bottom: 0;
+	transition: var(--transition);
+}
+
+.left-building {
+	position: absolute;
+	width: 42%;
+	height: 100%;
+	background: var(--building-bg-color);
+	top: 0px;
+	transition: var(--transition);
+}
+.right-building {
+	position: absolute;
+	width: 43%;
+	height: 100%;
+	background: var(--building-bg-color);
+	top: 0px;
+	right: 0px;
+	transition: var(--transition);
+}
+.water {
+	position: absolute;
+	height: 28%;
+	width: 58%;
+	background: #64a0d0;
+	right: 0;
+	bottom: 0;
+	transition: var(--transition);
+}
+
+.dark-water-right {
+	position: absolute;
+	height: 50%;
+	width: 62%;
+	right: 0;
+	top: 6%;
+	transition: var(--transition);
+}
+.dark-water-curve-right-1 {
+	position: absolute;
+	height: 16%;
+	width: 114%;
+	right: 0;
+	top: 0%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.dark-water-curve-right-2 {
+	position: absolute;
+	height: 16%;
+	width: 107%;
+	right: 0;
+	top: 27%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.dark-water-curve-right-3 {
+	position: absolute;
+	height: 16%;
+	width: 96%;
+	right: 0;
+	top: 57%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.dark-water-curve-right-4 {
+	position: absolute;
+	height: 16%;
+	width: 70%;
+	right: 0;
+	top: 86%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+.dark-water-back-1 {
+	position: absolute;
+	height: 59%;
+	width: 93%;
+	right: 0;
+	transition: var(--transition);
+}
+.dark-water-back-2 {
+	position: absolute;
+	height: 59%;
+	width: 67%;
+	right: 0;
+	top: 43%;
+	transition: var(--transition);
+}
+
+.top-left-water {
+	position: absolute;
+	height: 46%;
+	background: #c7ba9c;
+	width: 29%;
+	left: 0;
+	transition: var(--transition);
+}
+
+.top-left-water-1 {
+	position: absolute;
+	top: 30%;
+	height: 14%;
+	width: 65%;
+	left: 94%;
+	background: #c7ba9c;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.top-left-water-2 {
+	position: absolute;
+	top: 59%;
+	height: 16%;
+	width: 76%;
+	left: 94%;
+	background: #c7ba9c;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+.top-left-water-3 {
+	position: absolute;
+	top: 92%;
+	height: 17%;
+	width: 212%;
+	left: 0%;
+	background: #c7ba9c;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+.dark-water-curve-right-4 {
+	position: absolute;
+	height: 15%;
+	width: 72%;
+	right: 0;
+	top: 88%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.dark-water-left {
+	position: absolute;
+	height: 50%;
+	width: 6%;
+	background: #483c52;
+	bottom: 0;
+	left: 0;
+	transition: var(--transition);
+}
+.dark-water-back-left-1 {
+	position: absolute;
+	height: 90%;
+	width: 503%;
+	top: 30%;
+	transition: var(--transition);
+}
+.dark-water-curve-left-1 {
+	position: absolute;
+	top: 0;
+	height: 20%;
+	width: 92%;
+	right: -90%;
+	border-top-right-radius: 500px;
+	border-bottom-right-radius: 500px;
+	transition: var(--transition);
+}
+.dark-water-curve-left-2 {
+	position: absolute;
+	top: 30%;
+	height: 20%;
+	width: 500%;
+	right: -480%;
+	border-top-right-radius: 500px;
+	border-bottom-right-radius: 500px;
+	transition: var(--transition);
+}
+.dark-water-curve-left-3 {
+	position: absolute;
+	top: 62%;
+	height: 20%;
+	width: 214%;
+	right: -579%;
+	border-top-right-radius: 500px;
+	border-bottom-right-radius: 500px;
+	transition: var(--transition);
+}
+
+.small-dark-water {
+	position: absolute;
+	top: 90%;
+	height: 15%;
+	width: 11%;
+	background: #483c52;
+	right: 80%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.small-dark-water-2 {
+	position: absolute;
+	top: 90%;
+	height: 15%;
+	width: 11%;
+	background: #483c52;
+	right: 124%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.small-dark-water-3 {
+	position: absolute;
+	top: 18%;
+	height: 12%;
+	width: 193%;
+	background: #c1b9a2;
+	right: -175%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.small-dark-water-4 {
+	position: absolute;
+	top: 49%;
+	height: 13%;
+	width: 223%;
+	background: #c1b9a2;
+	right: -560%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+.small-dark-water-5 {
+	position: absolute;
+	top: 81%;
+	height: 15%;
+	width: 193%;
+	background: #c1b9a2;
+	right: -582%;
+	border-radius: 500px;
+	transition: var(--transition);
+}
+
+.front-rowing-boat-container {
+	height: 101%;
+	width: 87%;
+	transform: perspective(282px);
+	left: 0px;
+	transition: var(--transition);
+}
+.front-rowing-boat {
+	position: absolute;
+	left: -11%;
+	top: -21%;
+	height: 54%;
+	width: 30%;
+	background: var(--man-bg-color);
+	transform: rotate(68deg);
+	border-bottom-left-radius: 40px;
+	border-bottom-right-radius: 70px;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 30px;
+	transform: rotate(62deg) skew(6deg) perspective(100px);
+	transition: var(--transition);
+}
+.front-rowing-boat-knob {
+	position: absolute;
+	left: -15%;
+	top: -85%;
+	height: 44%;
+	width: 19%;
+	background: var(--man-bg-color);
+	transform: rotate(68deg);
+	border-radius: 100%;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 89%;
+	transform: rotate(0deg);
+	transition: var(--transition);
+}
+.front-rowing-boat-1-arch {
+	position: absolute;
+	height: 122%;
+	width: 41%;
+	background: rgba(0, 0, 0, 0);
+	left: -7%;
+	border-radius: 100%;
+	border-bottom: 4px solid var(--man-bg-color);
+	transform: rotate(58deg) skew(-17deg);
+	bottom: 8%;
+	transition: var(--transition);
+}
+.front-rowing-boat-2-arch {
+	position: absolute;
+	height: 100%;
+	width: 27%;
+	background: rgba(0, 0, 0, 0);
+	left: 3%;
+	border-radius: 100%;
+	border-bottom: 4px solid var(--man-bg-color);
+	transform: rotate(46deg) skew(-18deg);
+	bottom: 75%;
+	transition: var(--transition);
+}
+.back-rowing-boat-container {
+	position: absolute;
+	right: -2%;
+	height: 189%;
+	width: 13%;
+	bottom: 25%;
+	border-bottom-right-radius: 84%;
+	border-top-left-radius: 93%;
+	transition: var(--transition);
+}
+.back-rowing-boat {
+	position: absolute;
+	height: 81%;
+	width: 248%;
+	background: rgba(0, 0, 0, 0);
+	left: -185%;
+	border-radius: 100%;
+	border-bottom: 4px solid var(--man-bg-color);
+	transform: rotate(-65deg);
+	bottom: 23%;
+	transition: var(--transition);
+}
+.back-rowing-boat-2 {
+	position: absolute;
+	height: 128%;
+	width: 342%;
+	background: rgba(0, 0, 0, 0);
+	left: -262%;
+	border-radius: 100%;
+	border-bottom: 4px solid var(--man-bg-color);
+	transform: rotate(-65deg);
+	bottom: -21%;
+	transition: var(--transition);
+}
+.back-rowing-boat-filler {
+	position: absolute;
+	height: 75%;
+	width: 49%;
+	background: var(--man-bg-color);
+	right: 10%;
+	top: 4%;
+	border-top-right-radius: 100%;
+	transition: var(--transition);
+}
+.rower {
+	position: absolute;
+	width: 17%;
+	height: 38%;
+	top: -32%;
+	left: 11%;
+	transition: var(--transition);
+}
+.boat-reflection {
+	position: absolute;
+	width: 78%;
+	height: 11%;
+	background: var(--boat-reflection);
+	bottom: -9%;
+	left: 11%;
+	border-radius: 25%;
+	transition: var(--transition);
+}
+.rower-boat {
+	position: absolute;
+	height: 19%;
+	width: 100%;
+	background: var(--man-bg-color);
+	bottom: 0;
+	border-bottom-right-radius: 500px;
+	border-bottom-left-radius: 500px;
+	transform: skewY(0deg);
+	transition: var(--transition);
+}
+
+.sun-button {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	background: #bbdcd5;
+	left: 0;
+	transition: var(--transition);
+}
+
+.night-button {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	background: #222;
+	right: 0;
+	transition: var(--transition);
+}
+
+.man {
+	position: absolute;
+	height: 81%;
+	width: 36%;
+	left: 27%;
+	bottom: 10%;
+	transition: var(--transition);
+}
+.man-legs-container {
+	position: absolute;
+	transform: perspective(500px);
+	height: 100%;
+	width: 65%;
+	top: 39%;
+	left: 33%;
+	transition: var(--transition);
+}
+.man-legs {
+	width: 42%;
+	height: 88%;
+	left: 45%;
+	bottom: 0;
+	transition: var(--transition);
+	background: var(--man-bg-color);
+	transform: perspective(62px) rotateX(-61deg) translate3d(0px, 0px, 0px);
+	border-top-right-radius: 12px;
+}
+.man-torso {
+	position: absolute;
+	width: 40%;
+	height: 43%;
+	left: 21%;
+	bottom: 36%;
+	background: var(--man-bg-color);
+	border-bottom-left-radius: 25px;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 1px;
+	transition: var(--transition);
+	transform: rotate(-8deg) skewY(-23deg);
+}
+.man-head {
+	position: absolute;
+	height: 16%;
+	width: 27%;
+	background: var(--man-bg-color);
+	transition: var(--transition);
+	top: 5%;
+	left: 27%;
+	border-radius: 100%;
+	transform: rotate(16deg);
+}
+.man-hat {
+	position: absolute;
+	height: 36%;
+	width: 100%;
+	transition: var(--transition);
+	background: var(--man-bg-color);
+}
+
+.man-hat-cap {
+	position: absolute;
+	height: 43%;
+	width: 133%;
+	background: #a69a8c;
+	bottom: 0;
+	left: -16%;
+}
+.man-right-arm {
+	position: absolute;
+	height: 5%;
+	width: 72%;
+	transition: var(--transition);
+	background: var(--man-bg-color);
+	top: 29%;
+	left: -20%;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+.man-left-top-arm {
+	position: absolute;
+	height: 21%;
+	width: 10%;
+	background: var(--man-bg-color);
+	transition: var(--transition);
+	border-left: 1px solid #a69a8c;
+	left: 22%;
+	top: 29%;
+	transform: rotate(56deg);
+}
+
+.man-left-bottom-arm {
+	position: absolute;
+	height: 13%;
+	width: 9%;
+	background: var(--man-bg-color);
+	transition: var(--transition);
+	border-left: 1px solid #a69a8c;
+	left: -1%;
+	top: 41%;
+	transform: rotate(55deg);
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+.rowing-blade {
+	position: absolute;
+	height: 116%;
+	width: 6%;
+	background: var(--man-bg-color);
+	transition: var(--transition);
+	border-left: 1px solid #a69a8c;
+	left: 6%;
+	top: 22%;
+	transform: rotate(-23deg) skew(-9deg);
+	/* border-bottom-left-radius: 20px; */
+	/* border-bottom-right-radius: 20px; */
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.moon {
+	position: absolute;
+	bottom: 9%;
+	height: 14%;
+	left: 22%;
+	border-radius: 100%;
+	width: 62%;
+	transition: var(--transition);
+
+	background: var(--moon-background-color);
+}
+
+.cloud {
+	position: absolute;
+	height: 10%;
+	width: 70%;
+}
+
+.cloud-1 {
+	top: 25%;
+	right: -1%;
+}
+
+.cloud-1-1 {
+	position: absolute;
+	height: 60%;
+	width: 40%;
+	background: var(--cloud-dark-white);
+	bottom: 0;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 60%;
+	border-bottom-left-radius: 37%;
+}
+
+.cloud-1-1-inner {
+	position: absolute;
+	height: 53%;
+	width: 48%;
+	background: var(--cloud-white);
+	left: 33%;
+	top: 10%;
+	border-radius: 100%;
+}
+.cloud-1-2-inner {
+	position: absolute;
+	height: 71%;
+	width: 71%;
+	background: var(--cloud-white);
+	left: 14%;
+	top: 10%;
+	border-radius: 100%;
+}
+
+.cloud-1-3-inner {
+	position: absolute;
+	height: 60%;
+	width: 81%;
+	background: var(--cloud-white);
+	left: -28%;
+	top: 23%;
+	border-radius: 100%;
+}
+.cloud-1-2 {
+	position: absolute;
+	height: 84%;
+	width: 55%;
+	background: var(--cloud-dark-white);
+	bottom: 0;
+	left: 33%;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 100%;
+}
+
+.cloud-1-3 {
+	position: absolute;
+	height: 57%;
+	width: 31%;
+	background: var(--cloud-dark-white);
+	bottom: 0;
+	left: 83%;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 100%;
+	border-bottom-right-radius: 58%;
+}
+
+.cloud-2 {
+	top: 54%;
+	left: -17%;
+	transform: scale(0.7);
+}
+
+.left-window {
+	position: absolute;
+	height: 30%;
+	width: 30%;
+	transition: var(--transition);
+}
+
+.right-window {
+	position: absolute;
+	height: 13.4%;
+	width: 36%;
+	transition: var(--transition);
+}
+
+.right-right-window {
+	position: absolute;
+	height: 13.2%;
+	width: 12%;
+	transition: var(--transition);
+}
+
+.top-left-window-1 {
+	left: 33%;
+	top: 13.4%;
+	transition: var(--transition);
+}
+.top-left-window-2 {
+	left: 34%;
+	top: 31%;
+	transition: var(--transition);
+}
+.top-left-window-3 {
+	left: 35%;
+	top: 49%;
+	transition: var(--transition);
+}
+
+.top-right-window-1 {
+	left: 50%;
+	top: 14%;
+	transition: var(--transition);
+}
+
+.top-right-window-2 {
+	left: 50%;
+	top: 31%;
+	transition: var(--transition);
+}
+
+.top-right-window-3 {
+	left: 50%;
+	top: 49%;
+	transition: var(--transition);
+}
+
+.top-left-window {
+	left: 46%;
+	top: 13%;
+	transition: var(--transition);
+}
+
+.right-left-frame {
+	transition: var(--transition);
+}
+
+.right-right-frame {
+	position: absolute;
+	height: 63%;
+	width: 91%;
+	background: var(--window-frame-color);
+	top: 37%;
+	left: 10%;
+	right: 0;
+	transition: var(--transition);
+}
+.right-right-top-frame {
+	position: absolute;
+	height: 40%;
+	width: 101%;
+	background: var(--window-frame-color);
+	border-top-left-radius: 70%;
+	border-top-right-radius: 70%;
+	overflow: hidden;
+	box-shadow: -4px 0px 0px var(--window-shadow-out-color);
+	transition: var(--transition);
+}
+.right-right-right-top-frame {
+	position: absolute;
+	height: 40%;
+	width: 101%;
+	background: var(--window-frame-color);
+	border-top-left-radius: 70%;
+	border-top-right-radius: 70%;
+	overflow: hidden;
+	box-shadow: 5px 0px 0px var(--building-light-bg-color);
+	transition: var(--transition);
+}
+.top-right-right-right-window-half {
+	position: relative;
+	height: 52%;
+	top: 16%;
+	width: 80%;
+	margin: auto;
+	background: var(--window-glass-shine-color);
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+	border-top-left-radius: 100%;
+	border-top-right-radius: 100%;
+	transition: var(--transition);
+}
+
+.right-right-right- {
+	transition: var(--transition);
+}
+
+.right-right-window-overlay {
+	position: absolute;
+	background: var(--window-frame-color);
+	height: 70%;
+	width: 100%;
+	bottom: 0;
+	box-shadow: -4px 0px 0px var(--window-shadow-out-color);
+	transition: var(--transition);
+}
+
+.right-right-right-window-overlay {
+	position: absolute;
+	background: var(--window-frame-color);
+	height: 70%;
+	width: 100%;
+	bottom: 0;
+	box-shadow: 5px 0px 0px var(--building-light-bg-color);
+	transition: var(--transition);
+}
+.right-right-right-bottom-frame-inner {
+	position: absolute;
+	height: 28%;
+	width: 86%;
+	background: var(--window-glass-shine-color);
+	bottom: 6%;
+	left: 0%;
+	transition: var(--transition);
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+}
+.right-right-frame-inner {
+	position: absolute;
+	height: 71%;
+	width: 86%;
+	background: var(--window-glass-color);
+	top: -11%;
+	left: 0%;
+	transition: var(--transition);
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+}
+
+.right-right-right-frame-inner {
+	position: absolute;
+	height: 71%;
+	width: 86%;
+	background: var(--window-glass-shine-color);
+	top: -11%;
+	transition: var(--transition);
+	left: 0%;
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+}
+
+.right-bottom-frame-inner {
+	position: absolute;
+	height: 28%;
+	width: 86%;
+	background: #f30000;
+	bottom: 6%;
+	left: 0%;
+	box-shadow: -7px 0px 0px var(--window-shadow-in-color) inset;
+	transition: var(--transition);
+}
+.right-right-bottom-frame-inner {
+	position: absolute;
+	height: 28%;
+	width: 86%;
+	background: var(--window-glass-color);
+	bottom: 6%;
+	left: 0%;
+	transition: var(--transition);
+	box-shadow: 5px 0px 0px var(--window-shadow-in-color) inset;
+}
+
+.right-left-frame-inner {
+	transition: var(--transition);
+}
+.bottom-left-window {
+	left: 46%;
+	top: 52%;
+	transition: var(--transition);
+}
+
+.first-step {
+	position: absolute;
+	top: 68%;
+	left: -2%;
+	height: 2%;
+	width: 38%;
+	background: var(--first-step-bg-color);
+	transition: var(--transition);
+}
+
+.first-step-1 {
+	position: absolute;
+	top: 70%;
+	left: -4%;
+	height: 2%;
+	width: 40%;
+	background: var(--first-step-bg-color);
+	transition: var(--transition);
+}
+
+.second-step {
+	position: absolute;
+	top: 68%;
+	right: 1%;
+	height: 2%;
+	width: 65%;
+	background: var(--second-step-bg-color);
+	transition: var(--transition);
+}
+.second-step-1 {
+	position: absolute;
+	top: 70%;
+	right: 1%;
+	height: 2%;
+	width: 67%;
+	background: var(--second-step-bg-color);
+	transition: var(--transition);
+}
+
+.sun-button-sun {
+	position: absolute;
+	height: 200px;
+	width: 200px;
+	left: -50%;
+	top: -50%;
+	background: #fed85d;
+	border-radius: 100%;
+	box-shadow: 0px 0px 132px rgba(253, 221, 118, 0.85);
+	transition: var(--transition);
+}
+.moon-button-moon {
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	right: -50%;
+	top: -50%;
+	border-radius: 100%;
+	box-shadow: 42px 0px 2px #f1f1f1;
+	transition: var(--transition);
+	transform: rotate(-20deg);
+}
+
+.shing-lights {
+	position: absolute;
+	height: 5%;
+	width: 15%;
+	transition: var(--transition);
+}
+
+.shing-lights-1 {
+	top: 32%;
+	left: 6%;
+	transition: var(--transition);
+}
+.shing-lights-2 {
+	top: 66%;
+	left: 40%;
+	transition: var(--transition);
+}
+
+.shing-lights-3 {
+	top: 19%;
+	left: 52%;
+	transition: var(--transition);
+}
+
+.shining-water {
+	position: relative;
+	width: 23%;
+	height: 100%;
+	float: left;
+	margin-left: 8%;
+
+	border-radius: 44%;
+	transition: var(--transition);
+}
+
+/* Create color classes, this wil */
+
+.shining-water-colour {
+	background: var(--shining-light-color);
+}
+.window-shine-colour {
+	background: var(--window-glass-shine-color);
+}
+
+.water-colour {
+	background: var(--dark-water-bg);
+}
+
+.dark-water {
+	background: var(--other-water-bg);
+}
+
+@media screen and (max-width: 962px) {
+	.day-night-oval {
+		height: 500px;
+		width: 500px;
+	}
+	.moon-button-moon {
+		height: 50px;
+		width: 50px;
+		box-shadow: 23px 0px 0px #f1f1f1;
+	}
+	.sun-button-sun {
+		height: 50px;
+		width: 50px;
+	}
+}
+@media screen and (max-width: 600px) {
+	.day-night-oval {
+		height: 200px;
+		width: 200px;
+	}
+	.moon-button-moon {
+		height: 50px;
+		width: 50px;
+		box-shadow: 23px 0px 0px #f1f1f1;
+	}
+	.sun-button-sun {
+		height: 50px;
+		width: 50px;
+	}
+}
+
+@media screen and (max-width: 440px) {
+	.day-night-oval {
+		height: 150px;
+		width: 150px;
+	}
+	.moon-button-moon {
+		height: 50px;
+		width: 50px;
+		box-shadow: 23px 0px 0px #f1f1f1;
+	}
+	.sun-button-sun {
+		height: 50px;
+		width: 50px;
+	}
+}
+
+/* // For Codepen details */
+@media screen and (max-height: 700px) {
+	.day-night-oval {
+		height: 400px;
+		width: 400px;
+	}
+	.moon-button-moon {
+		height: 50px;
+		width: 50px;
+		box-shadow: 23px 0px 0px #f1f1f1;
+	}
+	.sun-button-sun {
+		height: 50px;
+		width: 50px;
+	}
+}
