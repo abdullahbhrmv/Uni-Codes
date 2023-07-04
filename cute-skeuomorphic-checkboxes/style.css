@@ -1,0 +1,218 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"), url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
+  font-weight: 100 1000;
+}
+@layer properties {
+  @property --checkbox-color-hue {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --checkbox-color-saturation {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --checkbox-color-lightness {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --checkbox-color-light-lightness {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --icon-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --icon-invert {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --icon-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --negative-shadow-offset {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --text-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+}
+:root {
+  /* -- Colors: */
+  --body-bg-color: hsl(221deg 16% 12%);
+  --checkbox-color-hue: 216;
+  --checkbox-color-saturation: 17;
+  --checkbox-color-lightness: 15;
+  --checkbox-color: hsl(
+      calc(var(--checkbox-color-hue) * 1deg) /**/
+      calc(var(--checkbox-color-saturation) * 1%) /**/
+      calc(var(--checkbox-color-lightness) * 1%) /**/
+  );
+  --checkbox-color-light: rgba(255 255 255 / 32%);
+  --checkbox-color-dark: rgba(0 0 0 / 45%);
+  /* -- Box */
+  --checkbox-border-radius: 24%;
+  --checkbox-width: 36;
+  --checkbox-height: 36;
+  --text-opacity: 0.6;
+  --negative-shadow-offset: 500;
+  --active-shadow-opacity: 0;
+  /* -- icon */
+  --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' class='feather feather-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --icon-opacity: 0;
+  --icon-size: 1;
+  /* -- easing */
+  --cubic-bezier: cubic-bezier(0.6, -1.2, 0.2, 2.2);
+  /* -- misc */
+  --debug: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  /* debug */
+  outline: calc(var(--debug) * 1px) dashed red;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--body-bg-color);
+  display: grid;
+  place-items: center;
+  font-family: "Mona Sans", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  grid-gap: 0.8em;
+  transform: scale(1);
+}
+
+label[for*=checkbox] {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 8px;
+  /* text settings */
+  color: rgba(255 255 255/var(--text-opacity));
+  font-size: 1.6em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  transition: --text-opacity 0.2s ease;
+  /* label:after */
+  /* label input[type="checkbox"] */
+}
+label[for*=checkbox]:hover {
+  --text-opacity: 1;
+}
+label[for*=checkbox]:hover:after {
+  --icon-opacity: .50;
+  --icon-invert: 100;
+  --icon-size: 0.8;
+}
+label[for*=checkbox]:hover input[type=checkbox] {
+  --checkbox-color-hue: 216;
+  --checkbox-color-saturation: 14;
+  --checkbox-color-lightness: 18;
+  --checkbox-color: hsl(
+    calc(var(--checkbox-color-hue) * 1deg)
+    calc(var(--checkbox-color-saturation) * 1%)
+    calc(var(--checkbox-color-lightness) * 1%)
+  );
+}
+label[for*=checkbox]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(var(--checkbox-width) * 1px);
+  height: calc(var(--checkbox-height) * 1px);
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70%;
+  border-radius: var(--checkbox-border-radius);
+  pointer-events: none;
+  background-image: var(--icon-check);
+  filter: invert(100%);
+  opacity: var(--icon-opacity);
+  transform: scale(var(--icon-size));
+  /* here I couldn't animate --icon-invert */
+  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s var(--cubic-bezier);
+}
+label[for*=checkbox]:has(input[type=checkbox]:checked):after {
+  --icon-opacity: 1;
+  /* 
+  div {
+    filter: invert(calc(var(--icon-invert) * 1%));
+  }
+  */
+  filter: invert(0%);
+}
+label[for*=checkbox] input[type=checkbox] {
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+  background: var(--checkbox-color);
+  width: calc(var(--checkbox-width) * 1px);
+  height: calc(var(--checkbox-height) * 1px);
+  border: calc(calc(var(--checkbox-width) / 15) * 1px) solid black;
+  border-radius: var(--checkbox-border-radius);
+  box-shadow: inset 0 0 calc(calc(var(--checkbox-width) / 10) * 1px) rgba(0 0 0/calc(var(--active-shadow-opacity))), inset 0 calc(calc(var(--checkbox-width) / 20) * 1px) calc(calc(var(--checkbox-width) / 30) * 1px) calc(calc(var(--checkbox-width) / var(--negative-shadow-offset)) * -1px) var(--checkbox-color-light), inset 0 calc(calc(var(--checkbox-width) / 20) * -1px) calc(calc(var(--checkbox-width) / 15) * 1px) calc(calc(var(--checkbox-width) / var(--negative-shadow-offset)) * -1px) var(--checkbox-color-dark);
+  transition: --checkbox-color-hue 0.1s ease, --checkbox-color-saturation 0.1s ease, --checkbox-color-lightness 0.1s ease, --checkbox-color 0s ease, --negative-shadow-offset 0.2s ease;
+}
+label[for*=checkbox] input[type=checkbox]:active, label[for*=checkbox] input[type=checkbox]:checked {
+  --checkbox-color-hue: 264;
+  --checkbox-color-saturation: 56;
+  --checkbox-color-lightness: 49;
+  --checkbox-color: hsl(
+    calc(var(--checkbox-color-hue) * 1deg) /**/
+    calc(var(--checkbox-color-saturation) * 1%) /**/
+    calc(var(--checkbox-color-lightness) * 1%) /**/
+  );
+}
+label[for*=checkbox] input[type=checkbox]:checked {
+  --checkbox-color-hue: 265;
+  --checkbox-color-saturation: 80;
+  --checkbox-color-lightness: 61;
+  --checkbox-color: hsl(
+    calc(var(--checkbox-color-hue) * 1deg)
+    calc(var(--checkbox-color-saturation) * 1%)
+    calc(var(--checkbox-color-lightness) * 1%)
+  );
+}
+label[for*=checkbox]:active {
+  --active-shadow-opacity: 0.8;
+}
+label[for*=checkbox]:active:after {
+  --icon-size: 0.7;
+}
+label[for*=checkbox]:active input[type=checkbox] {
+  --negative-shadow-offset: 0;
+}
