@@ -1,0 +1,189 @@
+body {
+	display: grid;
+	grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+
+	background: black;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+.fire {
+	position: relative;
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
+	align-self: end;
+	justify-self: center;
+	width: 300px;
+	height: 300px;
+	background: #880e4f;
+	border-radius: 50%;
+	box-shadow: 0 0 50px 50px #880e4f;
+	animation: background 5s ease infinite;
+}
+.flame {
+	position: absolute;
+	bottom: 70px;
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border-radius: 0 70%;
+	box-shadow: -10px -10px 0 10px orange, -20px -20px 0 20px yellow;
+	animation: flicker 5s ease infinite;
+}
+.f1 {
+	left: 50px;
+}
+.f3 {
+	transform: rotateZ(45deg);
+	left: 100px;
+	bottom: 100px;
+}
+.f2 {
+	transform: rotateZ(90deg);
+	left: 150px;
+}
+.log {
+	position: absolute;
+	bottom: 15px;
+	left: 50px;
+	width: 200px;
+	height: 50px;
+	background-color: brown;
+	border-radius: 10px;
+}
+.l1 {
+	transform: rotateZ(20deg);
+	box-shadow: 0 0 10px #3e2723;
+}
+.l2 {
+	transform: rotateZ(-20deg);
+	box-shadow: 0 0 10px #3e2723;
+}
+.l3 {
+	transform: rotate3d(1, 1, 1, 40deg);
+}
+.l4 {
+	transform: rotate3d(1, 1, 1, -40deg);
+}
+.spark {
+	width: 5px;
+	height: 5px;
+	background-color: orangered;
+	border-radius: 50%;
+	box-shadow: 0 0 5px 3px orange;
+	position: absolute;
+	top: 150px;
+	left: 150px;
+	opacity: 0;
+}
+.s1 {
+	animation: fadein 5s ease infinite, floatup 5s ease infinite,
+		left 5s ease infinite;
+}
+.s2 {
+	animation: fadein 5s 0.5s ease infinite, floatup 5s 0.5s ease infinite,
+		right 5s 0.5s ease infinite;
+}
+.s3 {
+	animation: fadein 5s 1s ease infinite, floatup 5s 1s ease infinite,
+		farleft 5s 1s ease infinite;
+}
+.s4 {
+	animation: fadein 5s 1.5s ease infinite, floatup 5s 1.5s ease infinite,
+		farright 5s 1.5s ease infinite;
+}
+.s5 {
+	animation: fadein 5s 2s linear infinite, floatup 5s 2s linear infinite;
+}
+.s6 {
+	animation: fadein 5s 2.5s ease infinite, floatup 5s 2.5s ease infinite,
+		left 5s 2.5s ease infinite;
+}
+.s7 {
+	animation: fadein 5s 3s ease infinite, floatup 5s 3s ease infinite,
+		right 5s 3s ease infinite;
+}
+.s8 {
+	animation: fadein 5s 3.5s ease infinite, floatup 5s 3.5s ease infinite,
+		farleft 5s 3.5s ease infinite;
+}
+
+@keyframes flicker {
+	0%,
+	100% {
+		background-color: red;
+		box-shadow: -10px -10px 0 10px orange, -15px -15px 0 15px yellow;
+	}
+	25%,
+	75% {
+		background-color: red;
+		box-shadow: -10px -10px 0 10px orangered, -20px -20px 0 20px yellow;
+	}
+	50% {
+		background-color: red;
+		box-shadow: -10px -10px 0 10px orange, -15px -15px 0 15px yellow;
+	}
+}
+
+@keyframes fadein {
+	0%,
+	100% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 100%;
+	}
+}
+
+@keyframes floatup {
+	0% {
+		top: 150px;
+	}
+	100% {
+		top: -50%;
+	}
+}
+@keyframes left {
+	0% {
+		left: 150px;
+	}
+	100% {
+		left: 100px;
+	}
+}
+@keyframes right {
+	0% {
+		left: 150px;
+	}
+	100% {
+		left: 200px;
+	}
+}
+@keyframes farleft {
+	0% {
+		left: 150px;
+	}
+	100% {
+		left: 0px;
+	}
+}
+@keyframes farright {
+	0% {
+		left: 150px;
+	}
+	100% {
+		left: 300px;
+	}
+}
+@keyframes background {
+	0%,
+	50%,
+	100% {
+		box-shadow: 0 0 50px 50px #880e4f;
+	}
+	25%,
+	75% {
+		box-shadow: 0 0 60px 60px #880e4f;
+	}
+}
