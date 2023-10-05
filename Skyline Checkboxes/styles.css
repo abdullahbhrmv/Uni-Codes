@@ -1,0 +1,65 @@
+body { 
+  background: linear-gradient(200deg, hsl(190, 10%, 10%), hsl(220, 30%, 30%)) no-repeat;
+  background-attachment: fixed;
+  display: grid;
+  height: 100%;
+  margin: 0;
+  padding: 0 1vw;
+}
+fieldset {
+  background: hsl(190, 10%, 10%);
+  border: 0;
+  display: grid;
+  gap: var(--gap, 2vw);
+  grid-template-columns: repeat(var(--windows, 4), 1fr);
+  margin: 0;
+  padding: var(--p, 3vw 2vw);
+  position: relative;
+}
+[type=checkbox] {
+  all: unset;
+  aspect-ratio: 1 / 1.25;
+  background: hsl(190, 10%, 20%);
+  transition: background .3s ease-in;
+  width: 100%;
+  &:checked {
+    background: #ffffae;
+  }
+}
+form {
+  align-items: end;
+  align-self: end;
+  display: grid;
+  gap: 1vw;
+  grid-auto-flow: column;
+  max-height: 85vh;
+}
+html {
+  display: grid;
+  min-height: 100vh;
+}
+
+/* Roofs */
+.antenna {
+  --asr: 1 / 1;
+  --clp: polygon(25% 100%, 25% 75%, 45% 75%, 45% 0, 55% 0%, 55% 75%, 75% 75%, 75% 100%);
+}
+.center {
+  --asr: 1 / .4;
+  --clp: polygon(0 100%, 50% 0, 100% 100%);
+}
+.left {
+  --asr: 1 / .25;
+  --clp: polygon(0 0, 100% 100%, 0 100%);
+}
+.roof {
+  &::before {
+    aspect-ratio: var(--asr, 1 / .4);
+    background-color: inherit;
+    clip-path: var(--clp, polygon(0 100%, 100% 0, 100% 100%));
+    content: "";
+    position: absolute;
+    bottom: calc(100% - 1px);
+    width: 100%;
+  }
+}
